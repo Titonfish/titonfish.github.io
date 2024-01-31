@@ -1,0 +1,1 @@
+info = {"9/4/2022 - v0.0.0": ["Created the base devlog website template, and created a program to easily add updates to the game. However, the game itself currently doesn't exist, so the title [INSERT NAME HERE] is replacing any mention of whatever possible game there will be eventually."], "9/5/2022 - v0.0.1": ["reeee", "https://www.youtube.com/embed/8rDDsGpVBB8"]};

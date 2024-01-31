@@ -1,0 +1,92 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    margin-top: 2.5%;    
+    background-color: black;
+    overflow-wrap: normal;
+    white-space: normal;
+}
+* {
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    margin-left: 1%;
+}
+button, input{
+    background-color: black;
+    border-color: white;
+}
+tr, th, td{
+    border: 1px solid white;
+    min-width: 125px;
+    border-collapse: collapse;
+}
+table{
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+li{
+    font-size: 30px;
+    display: inline;
+    font-weight: bold;
+    margin-right: 2.5%;
+}
+th{
+    text-align: left;
+}
+td{
+    text-align: center;
+}
+h2{
+    color: rgb(204, 204, 204);
+}
+h3{
+    color: rgb(153, 153, 153);
+}
+h4{
+    color: rgb(102, 102, 102);
+}
+h5{
+    color: rgb(51, 51, 51);
+}
+h6{
+    color: black;
+}
+select{
+    color: white;
+    background-color: black;
+    border-color: white;
+    border-width: 2px;
+}
+video{
+    width: 640;
+    height: 360;
+}
+img{
+    width: 640;
+    height: 360;
+}
+::-webkit-scrollbar, ::-webkit-scrollbar-thumb{
+    background-color: black;
+    border: 1px solid white;
+}
+::-webkit-scrollbar-thumb{
+    border: 4px double;
+}
+.row1{
+    font-size:xx-large;
+    line-height: 50px;
+    font-weight: bolder;
+}
+.row2{
+    font-size: larger;
+    line-height: 25px;
+    font-weight: bold;
+}
+.tableClass{
+    width: screen;
+    overflow-x: scroll;
+}

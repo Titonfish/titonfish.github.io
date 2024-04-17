@@ -1,33 +1,50 @@
-let consoleText = document.getElementById('loading-text');
+let consoleTextRef = document.getElementById("loading-text");
 
-consoleText.innerText = 'Loading webpage... 0%';
+let allConsoleText = [];
 
-let count = 0;
+AppendToConsole("Loading webpage... 0%");
 
-while (count < 100)
+LoadPage();
+
+
+function AppendToConsole(consoleText)
 {
-    count ++;
-    AppendText("hello", 1000);
-}
+    allConsoleText.push(consoleText);
 
-function AppendText(consoleNewLine, time)
-{
-    let appendInterval = setInterval(()=>
+    if (allConsoleText.length > 25)
     {
-        consoleText.innerText += "\n" + consoleNewLine;
-        clearInterval(appendInterval);
-    }, time);
+        allConsoleText.shift();
+    }
+
+    consoleTextRef.innerText = "";
+    for (let i = 0; i < allConsoleText.length; i++)
+    {
+        consoleTextRef.innerText += "\n" + allConsoleText[i];
+    }
 }
 
-function getRandomDelay() {
-  return Math.floor(Math.random() * 1000); // Random delay in milliseconds between 0 and 1000
+function LoadPage()
+{
+    setTimeout(function() { LoadPagePercentage(0) }, getRandomDelay())
+}
+function LoadPagePercentage(percentage)
+{
+    percentage += RandInt(1, 10);
+    AppendToConsole("Loading webpage... " + Math.min(percentage, 100) + "%");
+    if (percentage < 100)
+    {
+        setTimeout(function() { LoadPagePercentage(percentage) }, getRandomDelay() / 3)
+    }
 }
 
+function getRandomDelay()
+{
+    return Math.floor(Math.random() * 1000); // Random delay in milliseconds between 0 and 1000
+}
 function RandInt(min, max)
 {
     return Math.floor(Math.random() * (max - min) ) + min;
 }
-
 function RandNum(min, max)
 {
     return Math.random() * (max - min) + min;

@@ -7,11 +7,10 @@ for (const [key, value] of params){
     if (key == "file")
     {
         projectFileName = value;
-    }    
+    }
 }
 
 let fileData = "";
-
 
 Promise.all([
     fetch("Files/" + projectFileName + ".txt").then(x => x.text()),

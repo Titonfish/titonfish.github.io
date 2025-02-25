@@ -24,7 +24,10 @@ function UpdateProjectGrid(data){
 
     if (gridReversed){
         for (let i=fileLines.length-1;i>=0;i--){
-            if (fileLines[i].split("\t")[0] == "game"){
+            if (
+                (fileLines[i].split("\t")[0] == "game" && !showGames)
+                || (fileLines[i].split("\t")[0] == "video" && !showVideos)
+            ){
                 continue;
             }
 
@@ -44,8 +47,13 @@ function UpdateProjectGrid(data){
     }
     else{
         for (let i=0;i<fileLines.length;i++){
-            if ((fileLines[i].split("\t")[0] == "game" && showGames) || (fileLines[i].split("\t")[0] == "video" && showVideos)){
-            
+            if (
+                (fileLines[i].split("\t")[0] == "game" && !showGames)
+                || (fileLines[i].split("\t")[0] == "video" && !showVideos)
+            ){
+                continue;
+            }
+
             let params = fileLines[i].split("\t")[1];
             let image = fileLines[i].split("\t")[2];
             let title = fileLines[i].split("\t")[3];
@@ -58,10 +66,8 @@ function UpdateProjectGrid(data){
             + title + '</h1><p>'
             + date + '</p><p>'
             + description + '</p></div>';
-                }
-            }
+        }
     }
-    
 }
 
 submitButton.onclick = function(){

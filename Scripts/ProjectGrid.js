@@ -22,6 +22,10 @@ function UpdateProjectGrid(data){
 
     if (gridReversed){
         for (let i=fileLines.length-1;i>=0;i--){
+            if (fileLines[i].split("\t")[0] == "game"){
+                continue;
+            }
+
             let params = fileLines[i].split("\t")[1];
             let image = fileLines[i].split("\t")[2];
             let title = fileLines[i].split("\t")[3];

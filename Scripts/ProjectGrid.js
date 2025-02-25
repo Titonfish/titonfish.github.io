@@ -71,7 +71,7 @@ function UpdateProjectGrid(data){
 }
 
 submitButton.onclick = function(){
-    gridReversed = sortOrder.options[sortOrder.selectedIndex].value == "oldnew";
+    gridReversed = sortOrder.options[sortOrder.selectedIndex].value == "newold";
     showGames = showGamesCheckbox.checked;
     showVideos = showVideosCheckbox.checked;
 

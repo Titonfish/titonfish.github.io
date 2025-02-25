@@ -14,6 +14,9 @@ button, input{
     background-color: black;
     border-color: white;
 }
+input[type="checkbox"] {
+    accent-color: white;
+  }  
 tr, th, td{
     border: 1px solid white;
     min-width: 125px;

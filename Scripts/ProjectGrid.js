@@ -1,8 +1,8 @@
-let projectGrid = document.getElementById("projectGrid");
+let projectGrid = document.getElementById("ProjectGrid");
 let submitButton = document.getElementById("Submit");
 let sortOrder = document.getElementById("SortOrder");
-let showGames = document.getElementById("games");
-let showVideos = document.getElementById("videos");
+let showGames = document.getElementById("GamesCheckbox");
+let showVideos = document.getElementById("VideosCheckbox");
 
 let gridReversed = false;
 let doShowGames = true;
@@ -22,11 +22,8 @@ function UpdateProjectGrid(data){
 
     if (gridReversed){
         for (let i=fileLines.length-1;i>=0;i--){
-            if (fileLines[i].split("\t")[0] == "game" && !showGames
-        || fileLines[i].split("\t")[0] == "video" && !showVideos){
-            continue;
-        }
-
+            if ((fileLines[i].split("\t")[0] == "game" && showGames) || (fileLines[i].split("\t")[0] == "video" && showVideos)){
+            
             let params = fileLines[i].split("\t")[1];
             let image = fileLines[i].split("\t")[2];
             let title = fileLines[i].split("\t")[3];
@@ -39,15 +36,13 @@ function UpdateProjectGrid(data){
             + title + '</h1><p>'
             + date + '</p><p>'
             + description + '</p></div>';
+        }
         }
     }
     else{
         for (let i=0;i<fileLines.length;i++){
-            if (fileLines[i].split("\t")[0] == "game" && !showGames
-        || fileLines[i].split("\t")[0] == "video" && !showVideos){
-            continue;
-        }
-
+            if ((fileLines[i].split("\t")[0] == "game" && showGames) || (fileLines[i].split("\t")[0] == "video" && showVideos)){
+            
             let params = fileLines[i].split("\t")[1];
             let image = fileLines[i].split("\t")[2];
             let title = fileLines[i].split("\t")[3];
@@ -60,7 +55,8 @@ function UpdateProjectGrid(data){
             + title + '</h1><p>'
             + date + '</p><p>'
             + description + '</p></div>';
-        }
+                }
+            }
     }
     
 }

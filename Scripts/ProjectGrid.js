@@ -4,7 +4,7 @@ let sortOrder = document.getElementById("SortOrder");
 let showGamesCheckbox = document.getElementById("GamesCheckbox");
 let showVideosCheckbox = document.getElementById("VideosCheckbox");
 
-let gridReversed = false;
+let gridReversed = true;
 let showGames = true;
 let showVideos = true;
 

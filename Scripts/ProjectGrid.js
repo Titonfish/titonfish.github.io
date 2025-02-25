@@ -1,12 +1,12 @@
 let projectGrid = document.getElementById("ProjectGrid");
 let submitButton = document.getElementById("Submit");
 let sortOrder = document.getElementById("SortOrder");
-let showGames = document.getElementById("GamesCheckbox");
-let showVideos = document.getElementById("VideosCheckbox");
+let showGamesCheckbox = document.getElementById("GamesCheckbox");
+let showVideosCheckbox = document.getElementById("VideosCheckbox");
 
 let gridReversed = false;
-let doShowGames = true;
-let doShowVideos = true;
+let showGames = true;
+let showVideos = true;
 
 LoadWebpage();
 
@@ -66,8 +66,8 @@ function UpdateProjectGrid(data){
 
 submitButton.onclick = function(){
     gridReversed = sortOrder.options[sortOrder.selectedIndex].value == "oldnew";
-    /*showGames = doShowGames.checked;
-    showVideos = doShowVideos.checked;*/
+    showGames = showGamesCheckbox.checked;
+    showVideos = showVideosCheckbox.checked;
 
     LoadWebpage();
 }

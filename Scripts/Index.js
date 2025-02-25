@@ -16,11 +16,11 @@ function LoadWebpage(data){
         let date = fileLines[i].split("\t")[3];
         let description = fileLines[i].split("\t")[4];
 
-        projectGrid.innerHTML += '<div class="itemLink" onclick="location.href="project.html?file='
-        + params + ';"><img src="Images/'
+        projectGrid.innerHTML += '<div class="itemLink" onclick="location.href=' + "'project.html?file="
+        + params + "';" + '"><img src="Images/'
         + image + '.png" width="350px" height="196.875px" style="margin: 0px;" class=""><h1>'
         + title + '</h1><p>'
         + date + '</p><p>'
-        + description + '</p></div>";';
+        + description + '</p></div>';
     }
 }

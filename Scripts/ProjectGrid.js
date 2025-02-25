@@ -18,6 +18,8 @@ function LoadWebpage(){
 }
 
 function UpdateProjectGrid(data){
+    projectGrid.innerHTML = "";
+
     let fileLines = data.split("\n");
 
     if (gridReversed){
@@ -63,10 +65,9 @@ function UpdateProjectGrid(data){
 }
 
 submitButton.onclick = function(){
-    projectGrid.innerHTML = "";
     gridReversed = sortOrder.options[sortOrder.selectedIndex].value == "oldnew";
-    showGames = doShowGames.checked;
-    showVideos = doShowVideos.checked;
+    /*showGames = doShowGames.checked;
+    showVideos = doShowVideos.checked;*/
 
     LoadWebpage();
 }

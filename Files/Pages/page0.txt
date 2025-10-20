@@ -6,9 +6,12 @@ The Test Page
 
 Hey, is this updating?
 
-4361Ab /option page.html?page=0&inventory=4361Ab
 0 /option page.html?page=0&inventory=0
-C7002 /option page.html?page=0&inventory=C7002
-265 /option page.html?page=0&inventory=265
-0e00A /option page.html?page=0&inventory=0e00A
-00000001 /option page.html?page=0&inventory=00000001
+1 /option page.html?page=0&inventory=1
+2 /option page.html?page=0&inventory=2
+01 /option page.html?page=0&inventory=01
+05 /option page.html?page=0&inventory=05
+003 /option page.html?page=0&inventory=003
+003 /option page.html?page=0&inventory=0000B
+00F0F /option page.html?page=0&inventory=00F0F
+F000F00F0F /option page.html?page=0&inventory=F000F00F0F

@@ -29,7 +29,7 @@ function LoadWebpage(data){
 
     for (let i=1;i<fileLines.length;i++){
         let currentLine = fileLines[i];
-        if ("/link" in currentLine) {
+        if (currentLine.includes("/link")) {
             let text = currentLine.split(" /link ");
             bodyText.innerHTML += text[0];
             bodyText.innerHTML += '<a href="' + text[1] + '">Home</a>';

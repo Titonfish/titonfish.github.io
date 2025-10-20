@@ -28,6 +28,14 @@ function LoadWebpage(data){
     titleText.innerHTML = fileLines[0];
 
     for (let i=1;i<fileLines.length;i++){
-        bodyText.innerHTML += fileLines[i] + "<br>";
+        let currentLine = fileLines[i];
+        if ("/link" in currentLine) {
+            let text = currentLine.split(" /link ");
+            bodyText.innerHTML += text[0];
+            bodyText.innerHTML += '<a href="' + text[1] + '">Home</a>';
+        }
+        else {
+            bodyText.innerHTML += fileLines[i] + "<br>";
+        }
     }
 }

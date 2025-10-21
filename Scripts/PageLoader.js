@@ -34,10 +34,10 @@ function LoadWebpage(data){
 
     for (let i=1;i<fileLines.length;i++){
         let currentLine = fileLines[i];
-        currentLine.replaceAll("\\t","     ");
+        currentLine.replaceAll("[indent]","     ");
 
         if (currentLine.includes("/option")) {
-            let text = currentLine.split(" /link ");
+            let text = currentLine.split(" /option ");
             bodyText.innerHTML += text[0];
             bodyText.innerHTML += '<a href="' + text[1] + '">Home</a><br>';
         }

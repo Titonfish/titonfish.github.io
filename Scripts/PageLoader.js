@@ -24,7 +24,7 @@ Promise.all([
 
 function LoadWebpage(data){
     let tabText = document.getElementById("tabText");
-    let titleText = document.getElementById("titleText");
+    let titleText = document.getElementById("titleText") + " " + inventory;
     let bodyText = document.getElementById("bodyText");
 
     let fileLines = data.split("\n");
@@ -34,7 +34,6 @@ function LoadWebpage(data){
 
     for (let i=1;i<fileLines.length;i++){
         let currentLine = fileLines[i];
-        currentLine.replaceAll("[indent]","     ");
 
         if (currentLine.includes("/option")) {
             let text = currentLine.split(" /option ");
@@ -42,7 +41,7 @@ function LoadWebpage(data){
             bodyText.innerHTML += '<a href="' + text[1] + '">Home</a><br>';
         }
         else {
-            bodyText.innerHTML += fileLines[i] + "<br>";
+            bodyText.innerHTML += currentLine + "<br>";
         }
     }
 }

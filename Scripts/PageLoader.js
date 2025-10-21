@@ -3,7 +3,7 @@ let urlParams = document.getElementById("Params");
 const params = new URLSearchParams(window.location.search);
 
 let pageNumber = 0;
-let inventory = [];
+let inventory = "";
 for (const [key, value] of params){
     if (key == "page")
     {
@@ -34,6 +34,7 @@ function LoadWebpage(data){
 
     for (let i=1;i<fileLines.length;i++){
         let currentLine = fileLines[i];
+        currentLine = currentLine.replace("\\t","     ");
 
         if (currentLine.includes("/option")) {
             let text = currentLine.split(" /option ");
@@ -41,13 +42,13 @@ function LoadWebpage(data){
             bodyText.innerHTML += '<a href="' + text[1] + '">Home</a><br>';
         }
         else {
-            bodyText.innerHTML += currentLine + "<br>";
+            bodyText.innerHTML += fileLines[i] + "<br>";
         }
     }
 }
 
 function Hex2bin(hex){
-    hex = hex.replace("0x", "").toLowerCase();
+    hex = hex.toLowerCase();
     var out = "";
     for(var c of hex) {
         switch(c) {

@@ -24,13 +24,13 @@ Promise.all([
 
 function LoadWebpage(data){
     let tabText = document.getElementById("tabText");
-    let titleText = document.getElementById("titleText") + " " + inventory;
+    let titleText = document.getElementById("titleText");
     let bodyText = document.getElementById("bodyText");
 
     let fileLines = data.split("\n");
 
     tabText.innerHTML = fileLines[0];
-    titleText.innerHTML = fileLines[0];
+    titleText.innerHTML = fileLines[0] + " " + inventory;;
 
     for (let i=1;i<fileLines.length;i++){
         let currentLine = fileLines[i];
@@ -42,7 +42,7 @@ function LoadWebpage(data){
             bodyText.innerHTML += '<a href="' + text[1] + '">Home</a><br>';
         }
         else {
-            bodyText.innerHTML += fileLines[i] + "<br>";
+            bodyText.innerHTML += currentLine + "<br>";
         }
     }
 }

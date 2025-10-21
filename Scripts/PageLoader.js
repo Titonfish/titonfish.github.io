@@ -34,7 +34,7 @@ function LoadWebpage(data){
 
     for (let i=1;i<fileLines.length;i++){
         let currentLine = fileLines[i];
-        currentLine.replaceAll("\t","     ");
+        currentLine.replaceAll("\\t","     ");
 
         if (currentLine.includes("/option")) {
             let text = currentLine.split(" /link ");

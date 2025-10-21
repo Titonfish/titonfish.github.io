@@ -34,7 +34,6 @@ function LoadWebpage(data){
 
     for (let i=1;i<fileLines.length;i++){
         let currentLine = fileLines[i];
-        currentLine = currentLine.replace("\\t","     ");
 
         if (currentLine.includes("/option")) {
             let text = currentLine.split(" /option ");
@@ -42,7 +41,7 @@ function LoadWebpage(data){
             bodyText.innerHTML += '<a href="' + text[1] + '">Home</a><br>';
         }
         else {
-            bodyText.innerHTML += currentLine + "<br>";
+            bodyText.innerHTML += "     " + currentLine + "<br>";
         }
     }
 }

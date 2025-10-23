@@ -74,7 +74,7 @@ function GetOptionHTML(text, inventory){
     if (!CheckItems(inventory, reqItems)){
         return "";
     }
-    return '<a href="' + "page.html?page="+page+"&inventory="+ EncodeInventory(AddItem(inventory, newItems)) + '">' + linkText + '</a>';
+    return '<a href="' + "https://titonfish.github.io/page.html?page="+page+"&inventory="+ EncodeInventory(AddItem(inventory, newItems)) + '">' + linkText + '</a>';
 }
 
 function DecodeInventory(hex){
@@ -137,7 +137,6 @@ function EncodeInventory(bin){
 function CheckItems(inventory, itemsToCheck){
     for(var curItemCheck of itemsToCheck) {
         var curItemCheckInt = parseInt(curItemCheck);
-        console.log(curItemCheckInt);
         if(curItemCheckInt >= inventory.length || (curItemCheckInt < 0 && inventory[-curItemCheckInt] == '1') || inventory[curItemCheckInt] == '0'){
             return false;
         }

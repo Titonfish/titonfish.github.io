@@ -11,7 +11,7 @@ for (const [key, value] of params){
     }
     if (key == "inventory")
     {
-        inventory = Hex2bin(value);
+        inventory = DecodeInventory(value);
     }
 }
 
@@ -30,16 +30,15 @@ function LoadWebpage(data){
     let fileLines = data.split("\n");
 
     tabText.innerHTML = fileLines[0];
-    titleText.innerHTML = fileLines[0] + " " + inventory;;
+    titleText.innerHTML = fileLines[0];
 
     for (let i=1;i<fileLines.length;i++){
         let currentLine = fileLines[i];
         currentLine = currentLine.replace("\\t", "&nbsp;&nbsp;&nbsp;&nbsp;");
 
         if (currentLine.includes("/option")) {
-            let text = currentLine.split(" /option ");
-            bodyText.innerHTML += text[0];
-            bodyText.innerHTML += '<a href="' + text[1] + '">Home</a><br>';
+            let optionHTML = GetOptionHTML(currentLine,inventory);
+            bodyText.innerHTML += optionHTML == "" ? "" : "<br>";
         }
         else {
             bodyText.innerHTML += currentLine + "<br>";
@@ -47,7 +46,38 @@ function LoadWebpage(data){
     }
 }
 
-function Hex2bin(hex){
+function GetOptionHTML(text, inventory){
+    let quoteSplitText = text.split('"');
+
+    let linkText = quoteSplitText[1];
+
+    let spaceSplitText = quoteSplitText[2].trim().split(' ');
+    
+    let page = spaceSplitText[0];
+
+    let reqItems;
+    if (spaceSplitText[1] == "-"){
+        reqItems = []
+    }
+    else{
+        reqItems = spaceSplitText[1].split(',');
+    }
+    
+    let newItems;
+    if (spaceSplitText[2] == "-"){
+        newItems = []
+    }
+    else{
+        newItems = spaceSplitText[2].split(',');
+    }
+
+    if (!CheckItems(inventory, reqItems)){
+        return "";
+    }
+    return '<a href="' + "page.html?page="+page+"&inventory="+ EncodeInventory(AddItem(inventory, newItems)) + '">' + linkText + '</a>';
+}
+
+function DecodeInventory(hex){
     hex = hex.toLowerCase();
     var out = "";
     for(var c of hex) {
@@ -73,4 +103,72 @@ function Hex2bin(hex){
     }
 
     return out;
+}
+
+function EncodeInventory(bin){
+    let out = "";
+    while (bin != ""){
+        switch(bin.substring(0,4)) {
+            case "0000": out += "0"; break;
+            case "0001": out += "1"; break;
+            case "0010": out += "2"; break;
+            case "0011": out += "3"; break;
+            case "0100": out += "4"; break;
+            case "0101": out += "5"; break;
+            case "0110": out += "6"; break;
+            case "0111": out += "7"; break;
+            case "1000": out += "8"; break;
+            case "1001": out += "9"; break;
+            case "1010": out += "a"; break;
+            case "1011": out += "b"; break;
+            case "1100": out += "c"; break;
+            case "1101": out += "d"; break;
+            case "1110": out += "e"; break;
+            case "1111": out += "f"; break;
+            default: return "";
+        }
+        bin = bin.substring(4);
+        
+    }
+
+    return out;
+}
+
+function CheckItems(inventory, itemsToCheck){
+    for(var curItemCheck of itemsToCheck) {
+        var curItemCheckInt = parseInt(curItemCheck);
+        console.log(curItemCheckInt);
+        if(curItemCheckInt >= inventory.length || (curItemCheckInt < 0 && inventory[-curItemCheckInt] == '1') || inventory[curItemCheckInt] == '0'){
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function AddItem(inventory, itemsToAdd){
+    for(var curItemAdd of itemsToAdd) {
+        var curItemAddInt = parseInt(curItemAdd);
+        if (inventory.length < Math.abs(curItemAddInt) + 1){
+            inventory = ExtendInventory(inventory, Math.abs(curItemAddInt) + 1);
+        }
+        if (curItemAddInt < 0){
+            inventory = replaceAt(inventory, -curItemAddInt,'0');
+        }
+        else{
+            inventory = replaceAt(inventory, curItemAddInt,'1');
+        }
+    }
+
+    inventory = ExtendInventory(inventory, Math.ceil(inventory.length / 4.0) * 4);
+
+    return inventory;
+}
+
+function ExtendInventory(inventory, value){
+    return inventory + '0'.repeat(Math.max(value - inventory.length,0));
+}
+
+function replaceAt(string, index, replacement) {
+    return string.substring(0, index) + replacement + string.substring(index + replacement.length);
 }

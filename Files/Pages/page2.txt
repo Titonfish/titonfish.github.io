@@ -1,0 +1,6 @@
+Second Entrance
+\tWith a hearty leap you gallop into the second entrance, whinneying the whole way through, as your late grandmother always said. Bingo night took longer than expected. You Pull out your tommy gun and light up the cave with a rata-tat-tat, and you can hear the quiet sound of jazz as you hit the last living member of the Jazzrat in North America, killing it instantly. As it falls to the ground you see the soul of it float up, bearing a face that resembles J Edward Hoover. You grab it by the throat and brandish your brandysword, screaming at the top of your lungs. "GIVE ME THE KEY!!!!"
+\t"You play with fire, and sometimes ye get burned" it croaked, and vaporized in a cloud of mustard gas as a shiny ruby key fell to the ground. At last, you had bested your mother. Brotherson would love to hear this.
+
+/option "Leave the way you came" 0 - -
+/option "Pick up the key" 3 - 1

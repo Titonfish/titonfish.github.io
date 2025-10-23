@@ -1,4 +1,4 @@
-The Test Page 2: Now It's 1
-\tMore Tests, sure hope this works
+First Entrance
+\tYou walk through the first entrance, only to find that there's nothing here except for some empty pizza boxes strewn about. That and the giant gaping hole into the swirling mass of pink and yellow magical urges, calling your name and beckoning with a voice that's sweet as honey and an underlying tone that's heavier than your own stony heart. You feel drawn to it, but as you reach for it, you trip on a pizza box, grab a falling stalactite, and puncture the hole, popping it immediately. You fall to the ground, alone again, the sound of the hole merely whispers in the darkness.
 
-Go Back to the Start /link page.html?page=0
+/option "Leave the way you came" 0 - -

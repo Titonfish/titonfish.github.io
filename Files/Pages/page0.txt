@@ -1,17 +1,7 @@
-The Test Page
-\tHere's me testing things out and making a basic page, we'll see if this actually does anything important, who's to say really.
-\tThere was something beautiful in his hate. It wasn't the hate itself as it was a disgusting display of racism and intolerance. It was what propelled the hate and the fact that although he had this hate, he didn't understand where it came from. It was at that moment that she realized that there was hope in changing him
-\tI recollect that my first exploit in squirrel-shooting was in a grove of tall walnut-trees that shades one side of the valley. I had wandered into it at noontime, when all nature is peculiarly quiet, and was startled by the roar of my own gun, as it broke the Sabbath stillness around and was prolonged and reverberated by the angry echoes.
-\tLori lived her life through the lens of a camera. She never realized this until this very moment as she scrolled through thousands of images on your computer. She could remember the exact moment each photo was taken. She could remember where she had been, what she was thinking as she tried to get the shot, the smells of the surrounding area, and even the emotions that she felt taking the photo, yet she had trouble remembering what she had for breakfast.
+The Introduction
+\tYou find yourself at the mouth of a cave, a cave that splits into three different directions. The two on the left are completely open, but the third entrance has a giant locked door with a keyhole in the center. Where do you wish to go?
 
-maybe this'll work
-
-0 /option page.html?page=0&inventory=0
-1 /option page.html?page=0&inventory=1
-2 /option page.html?page=0&inventory=2
-01 /option page.html?page=0&inventory=01
-05 /option page.html?page=0&inventory=05
-003 /option page.html?page=0&inventory=003
-003 /option page.html?page=0&inventory=0000B
-00F0F /option page.html?page=0&inventory=00F0F
-F000F00F0F /option page.html?page=0&inventory=F000F00F0F
+/option "Go through the first entrance" 1 - -
+/option "Go through the second entrance" 2 -1 -
+/option "Go through the second entrance" 5 1 -
+/option "Go through the third entrance" 4 1 -

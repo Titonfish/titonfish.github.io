@@ -1,0 +1,4 @@
+Second Entrance, but again
+\tThere's nothing here.
+
+/option "Leave the way you came" 0 - -

@@ -1,0 +1,4 @@
+Picked up the Key
+\tPicking up the key, you feel a cold hand land on your shoulder. You spin around to see the Kool-Aid man, bearing both eyepatches, as always. He silently gives you a thumbs up (he's been mute since he first burnt that village to the ground), and does a high jump through the ceiling of the cave, raining debris and red liquid from above as he soars into the sky. (You assume it's kool-aid, but you can never really tell with him)
+
+/option "Leave the way you came" 0 - -

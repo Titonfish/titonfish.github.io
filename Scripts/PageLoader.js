@@ -38,6 +38,7 @@ function LoadWebpage(data){
 
     tabText.innerHTML = fileLines[0];
     titleText.innerHTML = fileLines[0];
+    bodyText.innerHTML = "";
 
     for (let i=1;i<fileLines.length;i++){
         let currentLine = fileLines[i];

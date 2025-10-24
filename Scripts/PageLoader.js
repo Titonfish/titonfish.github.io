@@ -15,12 +15,19 @@ for (const [key, value] of params){
     }
 }
 
-let fileData = "";
+UpdatePageData(pageNumber, inventory);
 
-Promise.all([
-    fetch("Files/Pages/page" + pageNumber + ".txt").then(x => x.text()),
-  ]).then(([fileData]) => LoadWebpage(fileData));
-;
+function UpdatePageData(page, newInventory){
+    pageNumber = page;
+    inventory = newInventory;
+    
+    let fileData = "";
+
+    Promise.all([
+        fetch("Files/Pages/page" + pageNumber + ".txt").then(x => x.text()),
+    ]).then(([fileData]) => LoadWebpage(fileData));
+    ;
+}
 
 function LoadWebpage(data){
     let tabText = document.getElementById("tabText");
@@ -76,7 +83,8 @@ function GetOptionHTML(text, inventory){
     if (!CheckItems(inventory, reqItems)){
         return "";
     }
-    return '<a href="' + "https://titonfish.github.io/page.html?page="+page+"&inventory="+ EncodeInventory(AddItem(inventory, newItems)) + '">' + linkText + '</a>';
+    return '<a onclick="UpdatePageData('+page +',' +EncodeInventory(AddItem(inventory, newItems))+')" href="javascript:void(0);">' + linkText + '</a>';
+    //return '<a href="' + "https://titonfish.github.io/page.html?page="+page+"&inventory="+ EncodeInventory(AddItem(inventory, newItems)) + '">' + linkText + '</a>';
 }
 
 function DecodeInventory(hex){

@@ -38,7 +38,9 @@ function LoadWebpage(data){
 
         if (currentLine.includes("/option")) {
             let optionHTML = GetOptionHTML(currentLine,inventory);
-            bodyText.innerHTML += optionHTML == "" ? "" : "<br>";
+            if (optionHTML != ""){
+                bodyText.innerHTML += optionHTML + "<br>";
+            }
         }
         else {
             bodyText.innerHTML += currentLine + "<br>";

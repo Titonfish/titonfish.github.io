@@ -84,7 +84,7 @@ function GetOptionHTML(text, inventory){
     if (!CheckItems(inventory, reqItems)){
         return "";
     }
-    return '<a onclick="UpdatePageData('+page +',"' +EncodeInventory(AddItem(inventory, newItems))+'")" href="javascript:void(0);">' + linkText + '</a>';
+    return '<a onclick="UpdatePageData('+page +',"' + AddItem(inventory, newItems)+'")" href="javascript:void(0);">' + linkText + '</a>';
     //return '<a href="' + "https://titonfish.github.io/page.html?page="+page+"&inventory="+ EncodeInventory(AddItem(inventory, newItems)) + '">' + linkText + '</a>';
 }
 

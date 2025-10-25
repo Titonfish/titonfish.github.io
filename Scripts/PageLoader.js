@@ -38,12 +38,14 @@ function LoadWebpage(data){
     let tabText = document.getElementById("tabText");
     let titleText = document.getElementById("titleText");
     let bodyText = document.getElementById("bodyText");
+    let copyButton = document.getElementById("copyButton");
 
     let fileLines = data.split("\n");
 
     tabText.innerHTML = fileLines[0];
     titleText.innerHTML = fileLines[0];
     bodyText.innerHTML = "";
+    copyButton.addEventListener("click", CopyLinkToPage);
 
     for (let i=1;i<fileLines.length;i++){
         let currentLine = fileLines[i];

@@ -91,7 +91,6 @@ function GetOptionHTML(text, inventory){
     if (!CheckItems(inventory, reqItems)){
         return "";
     }
-    console.log('<a onclick="UpdatePageData('+page +',\'' + AddItem(inventory, newItems)+'\')" href="javascript:void(0);">' + linkText + '</a>');
     return '<a onclick="UpdatePageData('+page +',\'' + AddItem(inventory, newItems)+'\')" href="javascript:void(0);">' + linkText + '</a>';
     //return '<a href="' + "https://titonfish.github.io/page.html?page="+page+"&inventory="+ EncodeInventory(AddItem(inventory, newItems)) + '">' + linkText + '</a>';
 }
@@ -192,5 +191,6 @@ function replaceAt(string, index, replacement) {
 }
 
 function CopyLinkToPage(){
-    navigator.clipboard.writeText("https://titonfish.github.io/page.html?p" + pageNumber + "i" + EncodeInventory(inventory));
+    console.log("https://titonfish.github.io/page.html?id=p" + pageNumber + "i" + EncodeInventory(inventory));
+    navigator.clipboard.writeText("https://titonfish.github.io/page.html?id=p" + pageNumber + "i" + EncodeInventory(inventory));
 }

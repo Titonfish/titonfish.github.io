@@ -39,6 +39,7 @@ function LoadWebpage(data){
     tabText.innerHTML = fileLines[0];
     titleText.innerHTML = fileLines[0];
     bodyText.innerHTML = "";
+    bodyText.innerHTML += '<a onclick="UpdatePageData(0,"01101")" href="javascript:void(0);">Test Link</a><br>';
 
     for (let i=1;i<fileLines.length;i++){
         let currentLine = fileLines[i];
@@ -84,6 +85,7 @@ function GetOptionHTML(text, inventory){
     if (!CheckItems(inventory, reqItems)){
         return "";
     }
+    console.log('<a onclick="UpdatePageData('+page +',"' + AddItem(inventory, newItems)+'")" href="javascript:void(0);">' + linkText + '</a>');
     return '<a onclick="UpdatePageData('+page +',"' + AddItem(inventory, newItems)+'")" href="javascript:void(0);">' + linkText + '</a>';
     //return '<a href="' + "https://titonfish.github.io/page.html?page="+page+"&inventory="+ EncodeInventory(AddItem(inventory, newItems)) + '">' + linkText + '</a>';
 }

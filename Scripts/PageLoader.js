@@ -13,6 +13,11 @@ for (const [key, value] of params){
     {
         inventory = DecodeInventory(value);
     }
+    if (key == "id")
+    {
+        pageNumber = parseInt(value.split("i")[0].replace("p",""));
+        inventory = value.split("i")[1];
+    }
 }
 
 UpdatePageData(pageNumber, inventory);
@@ -39,7 +44,6 @@ function LoadWebpage(data){
     tabText.innerHTML = fileLines[0];
     titleText.innerHTML = fileLines[0];
     bodyText.innerHTML = "";
-    bodyText.innerHTML += '<a onclick="UpdatePageData(0,"01101")" href="javascript:void(0);">Test Link</a><br>';
 
     for (let i=1;i<fileLines.length;i++){
         let currentLine = fileLines[i];
@@ -183,4 +187,8 @@ function ExtendInventory(inventory, value){
 
 function replaceAt(string, index, replacement) {
     return string.substring(0, index) + replacement + string.substring(index + replacement.length);
+}
+
+function CopyLinkToPage(){
+    navigator.clipboard.writeText("https://titonfish.github.io/page.html?p" + pageNumber + "i" + EncodeInventory(inventory));
 }

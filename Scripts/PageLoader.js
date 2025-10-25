@@ -120,11 +120,13 @@ function DecodeInventory(hex){
         }
     }
 
+
+
     return out;
 }
 
 function EncodeInventory(bin){
-    inventory = ExtendInventory(inventory, Math.ceil(inventory.length / 4.0) * 4);
+    bin = ExtendInventory(bin, Math.ceil(bin.length / 4.0) * 4);
     let out = "";
     while (bin != ""){
         switch(bin.substring(0,4)) {

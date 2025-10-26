@@ -34,12 +34,13 @@ function UpdatePageData(page, newInventory){
     ;
 }
 
-function AppendExistingPage(text, inventory, reqItems) {
+function AppendExistingPage(text, inventory, reqItems, newItems) {
     console.log("My name is append existing page, comparing " + inventory + " against " + reqItems)
     if (!CheckItems(inventory, reqItems)){
         console.log("oof");
         return;
     }
+    inventory = AddItem(inventory, newItems);
     console.log("success!");
     bodyText.innerHTML += "<br>" + text + "<br>";
 }
@@ -133,7 +134,7 @@ function GetConditionalTextHTML(text, inventory)
     console.log("I sure do love spaceSplitText: " + spaceSplitText + " of length " + spaceSplitText.length);
 
     let reqItems;
-    if (spaceSplitText.length <= 1 || spaceSplitText[1] == "-" || spaceSplitText[1] == ""){
+    if (spaceSplitText[1] == "-" || spaceSplitText[1] == ""){
         reqItems = []
         console.log("no items for you");
     }
@@ -175,10 +176,7 @@ function GetExamineHTML(text, inventory){
         newItems = spaceSplitText[5].split(',');
     }
 
-    if (!CheckItems(inventory, reqItems)){
-        return "";
-    }
-    return '<a onclick="AppendExistingPage(\''+ examineText +'\',\''+ inventory +'\',\'' + AddItem(inventory, newItems)+'\')" href="javascript:void(0);">' + linkText + '</a>';
+    return '<a onclick="AppendExistingPage(\''+ examineText +'\',\''+ inventory +'\',' + reqItems+','+newItems+')" href="javascript:void(0);">' + linkText + '</a>';
     //return '<a href="' + "https://titonfish.github.io/page.html?page="+page+"&inventory="+ EncodeInventory(AddItem(inventory, newItems)) + '">' + linkText + '</a>';
 }
 

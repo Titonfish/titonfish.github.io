@@ -5,3 +5,8 @@ The Third Entrance
 /conditional "This work?"
 
 /examine "The ultimate challenge" "Yippee, it worked!"
+
+/examine "Me when empty" "Wow a wall1"
+/examine "Me when space" "Wow a wall2" 
+/examine "Me when dash" "Wow a wall3" -
+/examine "Me when double dash" "Wow a wall4" - -

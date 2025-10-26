@@ -35,10 +35,13 @@ function UpdatePageData(page, newInventory){
 }
 
 function AppendExistingPage(text, inventory, reqItems) {
+    console.log("My name is append existing page, comparing " + inventory + " against " + reqItems)
     if (!CheckItems(inventory, reqItems)){
+        console.log("oof");
         return;
     }
-    optionText.innerHTML += "<br>" + text + "<br>";
+    console.log("success!");
+    bodyText.innerHTML += "<br>" + text + "<br>";
 }
 
 function LoadWebpage(data){
@@ -76,7 +79,7 @@ function LoadWebpage(data){
         else if (currentLine.includes("/examine")){
             customHTML = GetExamineHTML(currentLine, inventory);
             if (customHTML != "") {
-                bodyText.innerHTML += customHTML + "<br>";
+                optionText.innerHTML += customHTML + "<br>";
             }
         }
         else {
@@ -127,17 +130,23 @@ function GetConditionalTextHTML(text, inventory)
 
     let spaceSplitText = quoteSplitText[2].trim().split(' ');
 
+    console.log("I sure do love spaceSplitText: " + spaceSplitText + " of length " + spaceSplitText.length);
+
     let reqItems;
     if (spaceSplitText.length <= 1 || spaceSplitText[1] == "-" || spaceSplitText[1] == ""){
         reqItems = []
+        console.log("no items for you");
     }
     else{
         reqItems = spaceSplitText[1].split(',');
+        console.log("wowee zowee look at those items " + reqItems);
     }
 
     if (!CheckItems(inventory, reqItems)){
+        console.log("Too bad you can't use them :/");
         return "";
     }
+    console.log("and you can use them too? WOW");
     return conditionalText;
 }
 

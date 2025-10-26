@@ -2,3 +2,6 @@ The Third Entrance
 \tYou shove the key into the lock and make your way through the door, immediately falling into a pit, where you break all of your legs and twist 3 of your ankles. You collapse, unconcious, but before you lose your vision, you hear the sound of a very nasal elf-man lean down very close to you. He leans in towards your ear and breathes heavily, before saying the words
 \t"I'm proud of you."
 \tYou die with a twisted grin on your face and a Twisted Tea in your hand.
+/conditional "This work?"
+
+/examine "The ultimate challenge" "Yippee, it worked!"

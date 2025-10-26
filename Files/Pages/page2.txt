@@ -4,3 +4,6 @@ Second Entrance
 
 /option "Leave the way you came" 0 - -
 /option "Pick up the key" 3 - 1
+
+/examine "Top link is for losers, pick me up to see the real magic!" "You pick up the key and suddenly a huge hole bursts through your chest" -1 1
+/examine "Click me if you have the key" "Nerd" 1 -

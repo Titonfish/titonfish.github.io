@@ -34,10 +34,18 @@ function UpdatePageData(page, newInventory){
     ;
 }
 
+function AppendExistingPage(text, inventory, reqItems) {
+    if (!CheckItems(inventory, reqItems)){
+        return;
+    }
+    optionText.innerHTML += "<br>" + text + "<br>";
+}
+
 function LoadWebpage(data){
     let tabText = document.getElementById("tabText");
     let titleText = document.getElementById("titleText");
     let bodyText = document.getElementById("bodyText");
+    let optionText = document.getElementById("optionText");
     let copyButton = document.getElementById("copyButton");
 
     let fileLines = data.split("\n");
@@ -45,16 +53,30 @@ function LoadWebpage(data){
     tabText.innerHTML = fileLines[0];
     titleText.innerHTML = fileLines[0];
     bodyText.innerHTML = "";
+    optionText.innerHTML = "";
     copyButton.addEventListener("click", CopyLinkToPage);
 
     for (let i=1;i<fileLines.length;i++){
         let currentLine = fileLines[i];
         currentLine = currentLine.replace("\\t", "&nbsp;&nbsp;&nbsp;&nbsp;");
 
+        let customHTML = "";
         if (currentLine.includes("/option")) {
-            let optionHTML = GetOptionHTML(currentLine,inventory);
-            if (optionHTML != ""){
-                bodyText.innerHTML += optionHTML + "<br>";
+            customHTML = GetOptionHTML(currentLine, inventory);
+            if (customHTML != "") {
+                optionText.innerHTML += customHTML + "<br>";
+            }
+        }
+        else if (currentLine.includes("/conditional")){
+            customHTML = GetConditionalTextHTML(currentLine, inventory);
+            if (customHTML != "") {
+                bodyText.innerHTML += customHTML + "<br>";
+            }
+        }
+        else if (currentLine.includes("/examine")){
+            customHTML = GetExamineHTML(currentLine, inventory);
+            if (customHTML != "") {
+                bodyText.innerHTML += customHTML + "<br>";
             }
         }
         else {
@@ -63,6 +85,7 @@ function LoadWebpage(data){
     }
 }
 
+// Use this command (/option "linkText" page# itemReq itemAdd) when giving the player the option to turn to a different page
 function GetOptionHTML(text, inventory){
     let quoteSplitText = text.split('"');
 
@@ -73,7 +96,7 @@ function GetOptionHTML(text, inventory){
     let page = spaceSplitText[0];
 
     let reqItems;
-    if (spaceSplitText[1] == "-"){
+    if (spaceSplitText.length <= 1 || spaceSplitText[1] == "-" || spaceSplitText[1] == ""){
         reqItems = []
     }
     else{
@@ -81,7 +104,7 @@ function GetOptionHTML(text, inventory){
     }
     
     let newItems;
-    if (spaceSplitText[2] == "-"){
+    if (spaceSplitText.length <= 2 || spaceSplitText[2] == "-" || spaceSplitText[2] == ""){
         newItems = []
     }
     else{
@@ -94,6 +117,63 @@ function GetOptionHTML(text, inventory){
     return '<a onclick="UpdatePageData('+page +',\'' + AddItem(inventory, newItems)+'\')" href="javascript:void(0);">' + linkText + '</a>';
     //return '<a href="' + "https://titonfish.github.io/page.html?page="+page+"&inventory="+ EncodeInventory(AddItem(inventory, newItems)) + '">' + linkText + '</a>';
 }
+
+// Use this command (/conditional "conditionalText" itemReq) when displaying text only under certain conditions
+function GetConditionalTextHTML(text, inventory)
+{
+    let quoteSplitText = text.split('"');
+
+    let conditionalText = quoteSplitText[1];
+
+    let spaceSplitText = quoteSplitText[2].trim().split(' ');
+
+    let reqItems;
+    if (spaceSplitText.length <= 1 || spaceSplitText[1] == "-" || spaceSplitText[1] == ""){
+        reqItems = []
+    }
+    else{
+        reqItems = spaceSplitText[1].split(',');
+    }
+
+    if (!CheckItems(inventory, reqItems)){
+        return "";
+    }
+    return conditionalText;
+}
+
+// Use this command (/examine "linkText" "examineText" itemReq itemAdd) when giving the player the option to closely examine something without changing pages
+function GetExamineHTML(text, inventory){
+    let quoteSplitText = text.split('"');
+
+    let linkText = quoteSplitText[1];
+    let examineText = quoteSplitText[3];
+
+    let spaceSplitText = quoteSplitText[4].trim().split(' ');
+
+    let reqItems;
+    if (spaceSplitText.length <= 4 || spaceSplitText[4] == "-" || spaceSplitText[4] == ""){
+        reqItems = []
+    }
+    else{
+        reqItems = spaceSplitText[4].split(',');
+    }
+    
+    let newItems;
+    if (spaceSplitText.length <= 5 || spaceSplitText[5] == "-" || spaceSplitText[5] == ""){
+        newItems = []
+    }
+    else{
+        newItems = spaceSplitText[5].split(',');
+    }
+
+    if (!CheckItems(inventory, reqItems)){
+        return "";
+    }
+    return '<a onclick="AppendExistingPage(\''+ examineText +'\',\''+ inventory +'\',\'' + AddItem(inventory, newItems)+'\')" href="javascript:void(0);">' + linkText + '</a>';
+    //return '<a href="' + "https://titonfish.github.io/page.html?page="+page+"&inventory="+ EncodeInventory(AddItem(inventory, newItems)) + '">' + linkText + '</a>';
+}
+
+
 
 function DecodeInventory(hex){
     hex = hex.toLowerCase();
@@ -124,7 +204,6 @@ function DecodeInventory(hex){
 
     return out;
 }
-
 function EncodeInventory(bin){
     bin = ExtendInventory(bin, Math.ceil(bin.length / 4.0) * 4);
     let out = "";
@@ -165,7 +244,6 @@ function CheckItems(inventory, itemsToCheck){
 
     return true;
 }
-
 function AddItem(inventory, itemsToAdd){
     for(var curItemAdd of itemsToAdd) {
         var curItemAddInt = parseInt(curItemAdd);
@@ -184,7 +262,6 @@ function AddItem(inventory, itemsToAdd){
 
     return inventory;
 }
-
 function ExtendInventory(inventory, value){
     return inventory + '0'.repeat(Math.max(value - inventory.length,0));
 }
@@ -192,7 +269,6 @@ function ExtendInventory(inventory, value){
 function replaceAt(string, index, replacement) {
     return string.substring(0, index) + replacement + string.substring(index + replacement.length);
 }
-
 function CopyLinkToPage(){
     console.log("https://titonfish.github.io/page.html?id=p" + pageNumber + "i" + EncodeInventory(inventory));
     navigator.clipboard.writeText("https://titonfish.github.io/page.html?id=p" + pageNumber + "i" + EncodeInventory(inventory));

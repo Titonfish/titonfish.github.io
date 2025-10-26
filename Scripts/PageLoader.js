@@ -134,12 +134,12 @@ function GetConditionalTextHTML(text, inventory)
     console.log("I sure do love spaceSplitText: " + spaceSplitText + " of length " + spaceSplitText.length);
 
     let reqItems;
-    if (spaceSplitText[1] == "-" || spaceSplitText[1] == ""){
+    if (spaceSplitText == "-" || spaceSplitText == ""){
         reqItems = []
         console.log("no items for you");
     }
     else{
-        reqItems = spaceSplitText[1].split(',');
+        reqItems = spaceSplitText.split(',');
         console.log("wowee zowee look at those items " + reqItems);
     }
 

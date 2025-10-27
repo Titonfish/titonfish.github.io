@@ -20,7 +20,7 @@ for (const [key, value] of params){
     }
 }
 
-UpdatePageData(pageNumber, inventory);
+UpdatePageData(pageNumber, []);
 
 function UpdatePageData(page, newItems){
     pageNumber = page;

@@ -173,8 +173,8 @@ function GetExamineHTML(text){
         newItems = spaceSplitText[1].split(',');
     }
 
-    console.log('<a onclick="AppendExistingPage(\''+ examineText +'\','+ (reqItems.length == 0 ? "[]" : reqItems) +','+(newItems.length == 0 ? "[]" : newItems)+')" href="javascript:void(0);">' + linkText + '</a>');
-    return '<a onclick="AppendExistingPage(\''+ examineText +'\','+ (reqItems.length == 0 ? "[]" : reqItems) +','+(newItems.length == 0 ? "[]" : newItems)+')" href="javascript:void(0);">' + linkText + '</a>';
+    console.log('<a onclick="AppendExistingPage(\''+ examineText +'\',['+ reqItems +'],['+newItems+'])" href="javascript:void(0);">' + linkText + '</a>');
+    return '<a onclick="AppendExistingPage(\''+ examineText +'\',['+ reqItems +'],['+newItems+'])" href="javascript:void(0);">' + linkText + '</a>';
     //return '<a href="' + "https://titonfish.github.io/page.html?page="+page+"&inventory="+ EncodeInventory(AddItem(inventory, newItems)) + '">' + linkText + '</a>';
 }
 

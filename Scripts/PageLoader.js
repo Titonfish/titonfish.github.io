@@ -129,17 +129,17 @@ function GetConditionalTextHTML(text, inventory)
 
     let conditionalText = quoteSplitText[1];
 
-    let spaceSplitText = quoteSplitText[2].trim().split(' ');
+    let reqItemsRaw = quoteSplitText[2].trim();
 
-    console.log("I sure do love spaceSplitText: " + spaceSplitText + " of length " + spaceSplitText.length);
+    console.log("I sure do love reqItemsRaw: " + reqItemsRaw);
 
     let reqItems;
-    if (spaceSplitText == "-" || spaceSplitText == ""){
+    if (reqItemsRaw == "-" || reqItemsRaw == ""){
         reqItems = []
         console.log("no items for you");
     }
     else{
-        reqItems = spaceSplitText.split(',');
+        reqItems = reqItemsRaw.split(',');
         console.log("wowee zowee look at those items " + reqItems);
     }
 

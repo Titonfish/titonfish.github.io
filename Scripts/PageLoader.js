@@ -34,7 +34,13 @@ function UpdatePageData(page, newInventory){
     ;
 }
 
-function AppendExistingPage(text, inventory, reqItems, newItems) {
+function AppendExistingPage(text, reqItems, newItems) {
+    if (reqItems == null){
+        reqItems = [];
+    }
+    if (newItems == null){
+        newItems = [];
+    }
     console.log("My name is append existing page, comparing " + inventory + " against " + reqItems)
     if (!CheckItems(inventory, reqItems)){
         console.log("oof");
@@ -176,8 +182,8 @@ function GetExamineHTML(text, inventory){
         newItems = spaceSplitText[5].split(',');
     }
 
-    console.log('<a onclick="AppendExistingPage(\''+ examineText +'\',\''+ inventory +'\',' + reqItems+','+newItems+')" href="javascript:void(0);">' + linkText + '</a>');
-    return '<a onclick="AppendExistingPage(\''+ examineText +'\',\''+ inventory +'\',' + reqItems+','+newItems+')" href="javascript:void(0);">' + linkText + '</a>';
+    console.log('<a onclick="AppendExistingPage(\''+ examineText +'\',\''+ (reqItems.length == 0 ? "[]" : reqItems) +','+(newItems.length == 0 ? "[]" : newItems)+')" href="javascript:void(0);">' + linkText + '</a>');
+    return '<a onclick="AppendExistingPage(\''+ examineText +'\',\''+ (reqItems.length == 0 ? "[]" : reqItems) +','+(newItems.length == 0 ? "[]" : newItems)+')" href="javascript:void(0);">' + linkText + '</a>';
     //return '<a href="' + "https://titonfish.github.io/page.html?page="+page+"&inventory="+ EncodeInventory(AddItem(inventory, newItems)) + '">' + linkText + '</a>';
 }
 

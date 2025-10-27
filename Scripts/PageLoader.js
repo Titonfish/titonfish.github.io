@@ -41,13 +41,10 @@ function AppendExistingPage(text, reqItems, newItems) {
     if (newItems == null){
         newItems = [];
     }
-    console.log("My name is append existing page, comparing " + inventory + " against " + reqItems)
     if (!CheckItems(inventory, reqItems)){
-        console.log("oof");
         return;
     }
     inventory = AddItem(inventory, newItems);
-    console.log("success!");
     bodyText.innerHTML += "<br>" + text + "<br>";
 }
 
@@ -84,7 +81,7 @@ function LoadWebpage(data){
             }
         }
         else if (currentLine.includes("/examine")){
-            customHTML = GetExamineHTML(currentLine, inventory);
+            customHTML = GetExamineHTML(currentLine);
             if (customHTML != "") {
                 optionText.innerHTML += customHTML + "<br>";
             }
@@ -137,28 +134,22 @@ function GetConditionalTextHTML(text, inventory)
 
     let reqItemsRaw = quoteSplitText[2].trim();
 
-    console.log("I sure do love reqItemsRaw: " + reqItemsRaw);
-
     let reqItems;
     if (reqItemsRaw == "-" || reqItemsRaw == ""){
         reqItems = []
-        console.log("no items for you");
     }
     else{
         reqItems = reqItemsRaw.split(',');
-        console.log("wowee zowee look at those items " + reqItems);
     }
 
     if (!CheckItems(inventory, reqItems)){
-        console.log("Too bad you can't use them :/");
         return "";
     }
-    console.log("and you can use them too? WOW");
     return conditionalText;
 }
 
 // Use this command (/examine "linkText" "examineText" itemReq itemAdd) when giving the player the option to closely examine something without changing pages
-function GetExamineHTML(text, inventory){
+function GetExamineHTML(text){
     let quoteSplitText = text.split('"');
 
     let linkText = quoteSplitText[1];
@@ -167,19 +158,19 @@ function GetExamineHTML(text, inventory){
     let spaceSplitText = quoteSplitText[4].trim().split(' ');
 
     let reqItems;
-    if (spaceSplitText.length <= 4 || spaceSplitText[4] == "-" || spaceSplitText[4] == ""){
+    if (spaceSplitText.length == 0 || spaceSplitText[0] == "-" || spaceSplitText[0] == ""){
         reqItems = []
     }
     else{
-        reqItems = spaceSplitText[4].split(',');
+        reqItems = spaceSplitText[0].split(',');
     }
     
     let newItems;
-    if (spaceSplitText.length <= 5 || spaceSplitText[5] == "-" || spaceSplitText[5] == ""){
+    if (spaceSplitText.length <= 1 || spaceSplitText[1] == "-" || spaceSplitText[1] == ""){
         newItems = []
     }
     else{
-        newItems = spaceSplitText[5].split(',');
+        newItems = spaceSplitText[1].split(',');
     }
 
     console.log('<a onclick="AppendExistingPage(\''+ examineText +'\','+ (reqItems.length == 0 ? "[]" : reqItems) +','+(newItems.length == 0 ? "[]" : newItems)+')" href="javascript:void(0);">' + linkText + '</a>');

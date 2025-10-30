@@ -122,9 +122,7 @@ function GetOptionHTML(text, inventory){
         return "";
     }
     return '<a onclick="UpdatePageData('+page +',[' + newItems +'])" href="javascript:void(0);">' + linkText + '</a>';
-    //return '<a href="' + "https://titonfish.github.io/page.html?page="+page+"&inventory="+ EncodeInventory(AddItem(inventory, newItems)) + '">' + linkText + '</a>';
 }
-
 // Use this command (/conditional "conditionalText" itemReq) when displaying text only under certain conditions
 function GetConditionalTextHTML(text, inventory)
 {
@@ -147,7 +145,6 @@ function GetConditionalTextHTML(text, inventory)
     }
     return conditionalText;
 }
-
 // Use this command (/examine "linkText" "examineText" itemReq itemAdd) when giving the player the option to closely examine something without changing pages
 function GetExamineHTML(text){
     let quoteSplitText = text.split('"');
@@ -173,9 +170,7 @@ function GetExamineHTML(text){
         newItems = spaceSplitText[1].split(',');
     }
 
-    console.log('<a onclick="AppendExistingPage(\''+ examineText +'\',['+ reqItems +'],['+newItems+'])" href="javascript:void(0);">' + linkText + '</a>');
     return '<a onclick="AppendExistingPage(\''+ examineText +'\',['+ reqItems +'],['+newItems+'])" href="javascript:void(0);">' + linkText + '</a>';
-    //return '<a href="' + "https://titonfish.github.io/page.html?page="+page+"&inventory="+ EncodeInventory(AddItem(inventory, newItems)) + '">' + linkText + '</a>';
 }
 
 

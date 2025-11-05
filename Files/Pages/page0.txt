@@ -1,7 +1,0 @@
-The Introduction
-\tYou find yourself at the mouth of a cave, a cave that splits into three different directions. The two on the left are completely open, but the third entrance has a giant locked door with a keyhole in the center. Where do you wish to go?
-
-/option "Go through the first entrance" 1 - -
-/option "Go through the second entrance" 2 -1 -
-/option "Go through the second entrance" 5 1 -
-/option "Go through the third entrance" 4 1 -

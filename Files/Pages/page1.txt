@@ -1,8 +1,10 @@
 A Rude Awakening
 \tYou attempt to twist your body in the air, hoping that you can at least see where you're going to land. As you turn in the direction you're falling, out of the darkness a sharp rock face appears, like an gaping maw of teeth. It rapidly approaches, and you prepare for the sweet release of death when--
 
+
 \tYou sit up in your bed, drenched in sweat and eyes wide. Your heart is beating in your chest like a drum, and you clutch at your breast as you gasp awake, breathing heavily. After a moment you manage to calm yourself down a little, remembering it was only a dream. Your heart doesn't seem to be beating any slower however, in fact it only seems to be getting louder.
+
 \tWith a start you realize that there's someone at the door, pounding away. You hurridly throw off the sheets and jump down to the floor, calling out. "Be there in a second!" The banging stops, but the person doesn't say anything. You hobble over to the dresser, still a slight headache from the dream. You look up at the mirror, your hair is a mess.
 
 /option "Straighten and comb your beard (male)" 2
-/option "Push your long hair behind your head and brush it back (female)" 2 - 0
+/option "Push your long hair behind your head and brush it back (female)" 2 - 1

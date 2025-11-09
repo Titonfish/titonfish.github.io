@@ -96,9 +96,9 @@ function LoadWebpage(data){
 function GetOptionHTML(text, inventory){
     let quoteSplitText = text.split('"');
 
-    let linkText = quoteSplitText[1].replace("'","\\'").replace("`",'"');
+    let linkText = quoteSplitText[1].replace("'","\\'").replace('`','"');
 
-    let spaceSplitText = quoteSplitText[2].trim().split(' ').replace("`",'"');
+    let spaceSplitText = quoteSplitText[2].trim().split(' ').replace('`','"');
     
     let page = spaceSplitText[0];
 
@@ -149,8 +149,8 @@ function GetConditionalTextHTML(text, inventory)
 function GetExamineHTML(text){
     let quoteSplitText = text.split('"');
 
-    let linkText = quoteSplitText[1].replace("'","\\'").replace("`",'"');
-    let examineText = quoteSplitText[3].replace("'","\\'").replace("`",'"');
+    let linkText = quoteSplitText[1].replace("'","\\'").replace('`','"');
+    let examineText = quoteSplitText[3].replace("'","\\'").replace('`','"');
 
     let spaceSplitText = quoteSplitText[4].trim().split(' ');
 

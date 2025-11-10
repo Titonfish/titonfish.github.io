@@ -98,7 +98,7 @@ function GetOptionHTML(text, inventory){
 
     let linkText = quoteSplitText[1].replace("'","\\'").replace('`','"');
 
-    let spaceSplitText = quoteSplitText[2].trim().split(' ').replace('`','"');
+    let spaceSplitText = quoteSplitText[2].trim().split(' ');
     
     let page = spaceSplitText[0];
 
